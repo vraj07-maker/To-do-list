@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-do List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="todo-wrapper">
+    <h1>To-do List</h1>
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Enter task..." required />
+      <input type="date" id="date-input" required />
+      <select id="priority-input">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <div class="todo-box" id="task-list">
+      <!-- Tasks will be injected here -->
+    </div>
+
+    <p class="footer">Made by Vraj</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
