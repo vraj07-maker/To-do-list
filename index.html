@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-do List</title>
+  <title>To-Do List</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="todo-wrapper">
-    <h1>To-do List</h1>
-    <form id="task-form">
-      <input type="text" id="task-input" placeholder="Enter task..." required />
-      <input type="date" id="date-input" required />
-      <select id="priority-input">
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
-      </select>
-      <button type="submit">Add Task</button>
-    </form>
+  <div class="card">
+    <h2>To-do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter task..." />
+    <input type="date" id="dateInput" />
+    <select id="difficultyInput">
+      <option value="Easy">Easy</option>
+      <option value="Medium">Medium</option>
+      <option value="Hard">Hard</option>
+    </select>
+    <button id="addBtn">Add Task</button>
 
-    <div class="todo-box" id="task-list">
-      <!-- Tasks will be injected here -->
-    </div>
+    <ul id="taskList"></ul>
 
-    <p class="footer">Made by Vraj</p>
+    <footer>Made by Vxtif</footer>
   </div>
 
   <script src="script.js"></script>
