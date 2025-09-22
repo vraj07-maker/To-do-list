@@ -1,36 +1,47 @@
-const form = document.getElementById('task-form');
-const taskList = document.getElementById('task-list');
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+addBtn.addEventListener("click", () => {
+  const taskText = document.getElementById("taskInput").value.trim();
+  const taskDate = document.getElementById("dateInput").value;
+  const difficulty = document.getElementById("difficultyInput").value;
 
-  const taskText = document.getElementById('task-input').value;
-  const dueDate = document.getElementById('date-input').value;
-  const priority = document.getElementById('priority-input').value;
+  if (!taskText) return;
 
-  const task = document.createElement('div');
-  task.className = 'task';
+  const li = document.createElement("li");
+  li.className = "task-item";
 
-  task.innerHTML = `
-    <div class="task-left">
-      <input type="checkbox" />
-      <span class="task-text">${taskText}</span>
-    </div>
-    <div class="task-meta">
-      <span>${dueDate}</span> |
-      <span>${priority}</span>
-      <button class="edit-btn">✏️</button>
-      <button class="delete-btn">🗑️</button>
-    </div>
-  `;
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
 
-  taskList.appendChild(task);
-  form.reset();
-});
+  const span = document.createElement("span");
+  span.className = "task-text";
+  span.textContent = `${taskText} (${taskDate}) [${difficulty}]`;
 
-// Optional: Add delete/edit functionality
-taskList.addEventListener('click', function (e) {
-  if (e.target.classList.contains('delete-btn')) {
-    e.target.closest('.task').remove();
-  }
+  checkbox.addEventListener("change", () => {
+    span.classList.toggle("completed", checkbox.checked);
+  });
+
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "✏️";
+  editBtn.addEventListener("click", () => {
+    const newText = prompt("Edit task:", taskText);
+    if (newText) {
+      span.textContent = `${newText} (${taskDate}) [${difficulty}]`;
+    }
+  });
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "🗑️";
+  deleteBtn.addEventListener("click", () => {
+    li.remove();
+  });
+
+  li.appendChild(checkbox);
+  li.appendChild(span);
+  li.appendChild(editBtn);
+  li.appendChild(deleteBtn);
+  taskList.appendChild(li);
+
+  document.getElementById("taskInput").value = "";
 });
