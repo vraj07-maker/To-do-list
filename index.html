@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-do List</title>
+  <title>To-Do List</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="card">
-    <h2>To-do List</h2>
+  <header>
+    <h1 class="title">📝 To-Do List</h1>
+    <p class="subtitle">Stay organized, stay sharp.</p>
+  </header>
 
-    <input type="text" id="taskInput" placeholder="Enter task..." />
-    <input type="date" id="dateInput" />
+  <section class="input-section">
+    <input id="taskInput" type="text" placeholder="Task name" />
+    <input id="dateInput" type="date" />
     <select id="difficultyInput">
-      <option value="Easy">Easy</option>
-      <option value="Medium">Medium</option>
-      <option value="Hard">Hard</option>
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
     </select>
-    <button id="addBtn">Add Task</button>
+    <button id="addBtn">➕ Add</button>
+  </section>
 
-    <ul id="taskList"></ul>
+  <ul id="taskList"></ul>
 
-    <footer>Made by Vraj</footer>
-  </div>
+  <footer>
+    <p class="credit">Made by Vraj </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
