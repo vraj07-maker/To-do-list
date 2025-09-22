@@ -1,12 +1,9 @@
-const addBtn = document.getElementById("addBtn");
-const taskList = document.getElementById("taskList");
-
-addBtn.addEventListener("click", () => {
-  const taskText = document.getElementById("taskInput").value.trim();
-  const taskDate = document.getElementById("dateInput").value;
+document.getElementById("addBtn").addEventListener("click", function () {
+  const taskInput = document.getElementById("taskInput").value.trim();
+  const dateInput = document.getElementById("dateInput").value;
   const difficulty = document.getElementById("difficultyInput").value;
 
-  if (!taskText) return;
+  if (!taskInput) return;
 
   const li = document.createElement("li");
   li.className = "task-item";
@@ -16,7 +13,7 @@ addBtn.addEventListener("click", () => {
 
   const span = document.createElement("span");
   span.className = "task-text";
-  span.textContent = `${taskText} (${taskDate}) [${difficulty}]`;
+  span.textContent = `${taskInput} (${dateInput}) [${difficulty}]`;
 
   checkbox.addEventListener("change", () => {
     span.classList.toggle("completed", checkbox.checked);
@@ -25,9 +22,9 @@ addBtn.addEventListener("click", () => {
   const editBtn = document.createElement("button");
   editBtn.textContent = "✏️";
   editBtn.addEventListener("click", () => {
-    const newText = prompt("Edit task:", taskText);
-    if (newText) {
-      span.textContent = `${newText} (${taskDate}) [${difficulty}]`;
+    const newText = prompt("Edit task:", taskInput);
+    if (newText && newText.trim() !== "") {
+      span.textContent = `${newText} (${dateInput}) [${difficulty}]`;
     }
   });
 
@@ -41,7 +38,10 @@ addBtn.addEventListener("click", () => {
   li.appendChild(span);
   li.appendChild(editBtn);
   li.appendChild(deleteBtn);
-  taskList.appendChild(li);
+  document.getElementById("taskList").appendChild(li);
 
+  // Clear input fields
   document.getElementById("taskInput").value = "";
+  document.getElementById("dateInput").value = "";
+  document.getElementById("difficultyInput").value = "Easy";
 });
